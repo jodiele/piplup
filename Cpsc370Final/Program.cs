@@ -7,7 +7,7 @@ namespace Cpsc370Final {
                 Console.WriteLine("Usage: Cpsc370Final <arguments>");
 
             ShowArguments(args);
-
+            
             
         }
 
