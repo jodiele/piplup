@@ -8,6 +8,7 @@ namespace Cpsc370Final {
 
             ShowArguments(args);
             
+            
         }
 
         private static void ShowArguments(string[] args) {

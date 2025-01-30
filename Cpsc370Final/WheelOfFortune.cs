@@ -3,7 +3,7 @@ namespace Cpsc370Final;
 class WheelOfFortune
 {
     GameLoop gameLoop = new GameLoop();
-    public static void StartGame()
+    public void StartGame()
     {
         DelayPrint("===============================================");
         DelayPrint("            WHEEL OF FORTUNE GAME              ");
@@ -20,11 +20,13 @@ class WheelOfFortune
         {
             Console.Write("Invalid input. Please enter a number between 1 and 6: ");
         }
+        gameLoop.SetRoundsCount(rounds);
 
         DelayPrint($"You will be playing " + rounds + " rounds!\n");
 
         DelayPrint("How many AI players would you like to play against? (1-3)\n");
         int numAIPlayers = int.Parse(Console.ReadLine());
+        gameLoop.SetAiAmount(numAIPlayers);
 
         Console.Write($"You will be playing against " + numAIPlayers + " AI players!\n");
 
