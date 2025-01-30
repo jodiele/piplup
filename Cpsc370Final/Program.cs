@@ -5,8 +5,6 @@ namespace Cpsc370Final {
         static void Main(string[] args) {
             if (args.Length < 1)
                 Console.WriteLine("Usage: Cpsc370Final <arguments>");
-
-            ShowArguments(args);
             
             
         }
