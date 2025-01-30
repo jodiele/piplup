@@ -9,8 +9,12 @@ public class GameLoop {
         for (int currentRound = 0; currentRound < roundsCount; currentRound++)
         {
             Console.WriteLine($"Round {currentRound + 1} begins!");
-            //logic for player guess
+            //user guesses
+            Console.Write("Please enter a letter or type 'SOLVE' to guess the entire phrase: ");
+            string userInput = Console.ReadLine().Trim();
+            NormalPlayer.Guess(userInput);
             //ai guesses
+            AIPlayers.Guess();
             for (int aiTurn = 0; aiTurn < aiAmount; aiAmount++) {
                 //logic for each AI to play
             }
@@ -21,17 +25,14 @@ public class GameLoop {
         roundsCount = rounds;
     }
 
-    public void GetUserGuess(string currentAnswer)
+    public void Guess(string userInput, string currentAnswer)
     {
-        Console.Write("Please enter a letter or type 'SOLVE' to guess the entire phrase: ");
-        string userInput = Console.ReadLine().Trim();
-
         bool isCorrectAnswer = false;
         while (isCorrectAnswer == false)
         {
             if (userInput.Equals("SOLVE", StringComparison.OrdinalIgnoreCase))
             {
-                Console.Write("Please enter your guess for the entire phrase: ");
+                Console.Write("Enter your guess for the entire phrase: ");
                 string userGuess = Console.ReadLine().Trim();
 
                 if (userGuess.Equals(currentAnswer, StringComparison.OrdinalIgnoreCase))
@@ -54,8 +55,9 @@ public class GameLoop {
                 if (currentAnswer.IndexOf(guessedLetter, StringComparison.OrdinalIgnoreCase) >= 0)
                 {
                     Console.WriteLine($"You guessed the letter: {guessedLetter}");
-                    // TODO: ADD CODE TO GO TO THE NEXT PLAYER TURN
-                    isCorrectAnswer = true;
+                    isCorrectAnswer = false;
+                    Console.Write("Enter another letter to guess or type 'SOLVE' to guess the entire phrase: ");
+                    userInput = Console.ReadLine().Trim();
                 }
                 else
                 {
