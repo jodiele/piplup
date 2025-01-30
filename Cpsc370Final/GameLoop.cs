@@ -10,7 +10,9 @@ public class GameLoop
         //amount of rounds
         for (int currentRound = 0; currentRound < roundsCount; currentRound++)
         {
+            Console.WriteLine($"Round {currentRound + 1} begins!");
             //logic for player guess
+            
             
             //ai guesses
             for (int aiTurn = 0; aiTurn < aiAmount; aiTurn++)
@@ -47,6 +49,7 @@ public class GameLoop
                     Console.WriteLine("Congratulations! Your guess is correct.");
                     isCorrectAnswer = true;
                     // TODO: ADD CODE TO GO TO NEXT PLAYER TURN
+                    
                 }
                 else
                 {
