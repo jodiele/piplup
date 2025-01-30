@@ -1,6 +1,34 @@
 namespace Cpsc370Final;
 
-public class GameLoop {
+public class GameLoop
+{
+    private int roundsCount;
+    private int aiAmount;
+
+    public void GameplayLoop()
+    {
+        //amount of rounds
+        for (int currentRound = 0; currentRound < roundsCount; currentRound++)
+        {
+            //logic for player guess
+            
+            //ai guesses
+            for (int aiTurn = 0; aiTurn < aiAmount; aiAmount++)
+            {
+                //logic for each AI to play
+            }
+        }
+    }
+
+    public void SetRoundsCount(int rounds)
+    {
+        roundsCount = rounds;
+    }
+
+    public void SetAiAmount(int amount)
+    {
+        aiAmount = amount;
+    }
 	public void GetUserGuess(string currentAnswer)
     {
         Console.Write("Please enter a letter or type 'SOLVE' to guess the entire phrase: ");
