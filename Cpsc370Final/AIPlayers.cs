@@ -7,14 +7,14 @@ namespace Cpsc370Final
 		private string[] aiNames = { "Tanner", "Hannah", "Divi", "Jodie", "Ivan" };
 		public string name { get; set; }
 		private double difficulty = 100;
-		private int money;
+		private int money = 100;
 
 		private void SetName()
 		{
 			this.name = aiNames[Random.Shared.Next(aiNames.Length)];
 		}
 
-		private int GetMoney()
+		public int GetMoney()
 		{
 			return this.money;
 		}
