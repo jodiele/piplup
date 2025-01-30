@@ -22,7 +22,7 @@ public class NormalPlayer {
 			money += amount;
 	}
 	
-    public void Guess(string userInput, string currentAnswer)
+public void Guess(string userInput, string currentAnswer)
     {
         bool isCorrectAnswer = false;
         while (isCorrectAnswer == false)
@@ -70,4 +70,3 @@ public class NormalPlayer {
             }
         }
     }
-}
