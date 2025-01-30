@@ -13,7 +13,7 @@ public class GameLoop
             //logic for player guess
             
             //ai guesses
-            for (int aiTurn = 0; aiTurn < aiAmount; aiAmount++)
+            for (int aiTurn = 0; aiTurn < aiAmount; aiTurn++)
             {
                 //logic for each AI to play
             }
