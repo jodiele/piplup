@@ -1,35 +1,26 @@
 namespace Cpsc370Final;
 
-public class GameLoop
-{
+public class GameLoop {
     private int roundsCount;
     private int aiAmount;
 
-    public void GameplayLoop()
-    {
+    public void GameplayLoop() {
         //amount of rounds
-        for (int currentRound = 0; currentRound < roundsCount; currentRound++)
-        {
+        for (int currentRound = 0; currentRound < roundsCount; currentRound++) {
             //logic for player guess
-            
+
             //ai guesses
-            for (int aiTurn = 0; aiTurn < aiAmount; aiTurn++)
-            {
+            for (int aiTurn = 0; aiTurn < aiAmount; aiAmount++) {
                 //logic for each AI to play
             }
         }
     }
 
-    public void SetRoundsCount(int rounds)
-    {
+    public void SetRoundsCount(int rounds) {
         roundsCount = rounds;
     }
 
-    public void SetAiAmount(int amount)
-    {
-        aiAmount = amount;
-    }
-	public void GetUserGuess(string currentAnswer)
+    public void GetUserGuess(string currentAnswer)
     {
         Console.Write("Please enter a letter or type 'SOLVE' to guess the entire phrase: ");
         string userInput = Console.ReadLine().Trim();
@@ -137,5 +128,19 @@ public class GameLoop
         Random random = new Random();
         List<string> phrases = CategoryPhrases[category];
         return phrases[random.Next(phrases.Count)];
+    }
+    
+    public void SetAiAmount(int amount, List<int> aiDifficulties) {
+        CreateAiPlayers(amount, aiDifficulties);
+    }
+    
+
+    private void CreateAiPlayers(int playerAmount, List<int> aiDifficulties) { 
+        List<AIPlayers> aiPlayers = new List<AIPlayers>();
+        for (int i = 0; i < playerAmount; i++) {
+            // create a new AI player with a random difficulty
+            //TODO: take user input and set that to the multiplier per input
+            aiPlayers.Add(new AIPlayers(aiDifficulties[i]));
+        }
     }
 }

@@ -26,14 +26,22 @@ class WheelOfFortune
 
         DelayPrint("How many AI players would you like to play against? (1-3)\n");
         int numAIPlayers = int.Parse(Console.ReadLine());
-        gameLoop.SetAiAmount(numAIPlayers);
+        
 
         Console.Write($"You will be playing against " + numAIPlayers + " AI players!\n");
 
         // unless AI difficulty is random we can change this
-        DelayPrint("Now, please choose AI difficulty: ('1' = Easy, '2' = medium, or '3' = hard)");
-        int difficultyLevel = int.Parse(Console.ReadLine());
+        List<int> aiDifficulties = new List<int>();
+        
+        for (int i = 0; i < numAIPlayers; i++)
+        {
+            DelayPrint("Now, please choose AI difficulty: ('1' = Easy, '2' = medium, or '3' = hard)");
+            string difficulty = Console.ReadLine();
+            aiDifficulties.Add(int.Parse(difficulty));
+        }
 
+        gameLoop.SetAiAmount(numAIPlayers, aiDifficulties);
+        
         DisplayInstructions();
 
         string category = GameLoop.ChooseRandomCategory();
