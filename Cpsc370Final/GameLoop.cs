@@ -9,13 +9,19 @@ public class GameLoop {
         for (int currentRound = 0; currentRound < roundsCount; currentRound++)
         {
             String category = ChooseRandomCategory();
+            Console.WriteLine($"The chosen category is: {category}");
             String currentAnswer = ChooseRandomPhrase(category);
             Console.WriteLine($"Round {currentRound + 1} begins!");
+            
             //user guesses
             Console.Write("Please enter a letter or type 'SOLVE' to guess the entire phrase: ");
             string userInput = Console.ReadLine().Trim();
-            new NormalPlayer().Guess(userInput, currentAnswer);
-            //AIPlayers.Guess();
+            bool guessed = new NormalPlayer().Guess(userInput, currentAnswer);
+            if (guessed) {
+                break; // if the user guesses the correct answer, goes to next round
+            } else {
+                //AIPlayers.Guess();
+            }
             for (int aiTurn = 0; aiTurn < aiAmount; aiAmount++) {
                 //logic for each AI to play
             }

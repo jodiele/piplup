@@ -2,7 +2,7 @@ namespace Cpsc370Final;
 
 public class NormalPlayer {
 	private int money;
-
+	private char[] guessedLetters;
 	public NormalPlayer(int initialMoney = 100) {
 		money = initialMoney;
 	}
@@ -20,42 +20,63 @@ public class NormalPlayer {
 			money += amount;
 	}
 
-	public void Guess(string userInput, string currentAnswer) {
+	public bool Guess(string userInput, string currentAnswer) {
+		bool endTurn = false;
 		bool isCorrectAnswer = false;
-		while (isCorrectAnswer == false) {
+		while (endTurn == false) {
 			if (userInput.Equals("SOLVE", StringComparison.OrdinalIgnoreCase)) {
 				Console.Write("Enter your guess for the entire phrase: ");
 				string userGuess = Console.ReadLine().Trim();
 
 				if (userGuess.Equals(currentAnswer, StringComparison.OrdinalIgnoreCase)) {
-					Console.WriteLine("Congratulations! Your guess is correct.");
+					Console.WriteLine("Yay! Your guess is correct.");
 					isCorrectAnswer = true;
-					// TODO: ADD CODE TO GO TO NEXT PLAYER TURN
+					endTurn = true;
 				}
 				else {
-					Console.WriteLine("Sorry, that's not correct.");
-					// TODO: ADD CODE TO TAKE AWAY USER'S MONEY AND GO TO NEXT PLAYER TURN
+					Console.WriteLine("That's not correct.");
+					SetMoney(0);
 					isCorrectAnswer = false;
+					endTurn = true;
 				}
 			}
 			else if (userInput.Length == 1) {
 				char guessedLetter = userInput[0];
 				if (currentAnswer.IndexOf(guessedLetter, StringComparison.OrdinalIgnoreCase) >= 0) {
-					Console.WriteLine($"You guessed the letter: {guessedLetter}");
+					guessedLetters = guessedLetters.Append(guessedLetter).ToArray();
+					Console.WriteLine("You guessed a correct letter!");
+					Console.WriteLine("===============================================");
+					DisplayGuessedWord(currentAnswer);
+					Console.WriteLine("===============================================");
 					isCorrectAnswer = false;
 					Console.Write("Enter another letter to guess or type 'SOLVE' to guess the entire phrase: ");
 					userInput = Console.ReadLine().Trim();
 				}
 				else {
 					Console.WriteLine("Sorry, that letter is not in the phrase.");
-					// TODO: ADD CODE TO TAKE AWAY USER'S MONEY AND GO TO NEXT PLAYER TURN
 					isCorrectAnswer = false;
+					endTurn = true;
 				}
 			}
 			else {
 				Console.WriteLine("Invalid input. Please enter one letter or type 'SOLVE'.");
 				Console.Write("Please enter a letter or type 'SOLVE' to guess the entire phrase: ");
 				userInput = Console.ReadLine().Trim();
+			}
+		}
+		return isCorrectAnswer;
+	}
+	
+	private void DisplayGuessedWord(string currentAnswer) {
+		for (int i = 0; i < currentAnswer.Length; i++) {
+			if (currentAnswer[i] == ' ') {
+				Console.Write(" ");
+			}
+			else if (guessedLetters.Contains(currentAnswer[i])) {
+			    Console.Write(currentAnswer[i]);				
+			}
+			else {
+				Console.Write("_");
 			}
 		}
 	}
