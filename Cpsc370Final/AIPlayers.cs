@@ -4,7 +4,7 @@ public class AIPlayers {
 	// Class for AI players, which will have difficulty and name
 	private string[] aiNames = { "Tanner", "Hannah", "Divi", "Jodie", "Ivan" };
 	public string name { get; set; }
-	private int difficulty = 100;
+	private double difficulty = 100;
 	private int money;
 
 	private void SetName() {
@@ -19,10 +19,20 @@ public class AIPlayers {
 		this.money = money;
 	}
 
-	public AIPlayers(int multiplier) { 
+	public AIPlayers(int multiplier) {
 		SetName();
-		// just multiply the difficulty by the multiplier, which will be set by the users when they set the ai difficulties
-		difficulty *= multiplier;
+		// multiplier will vary depending on input that we receive, will be a scale
+		// 1 = easy, 2 = medium, 3 = hard
+		if (multiplier == 1) {
+			difficulty *= .5;
+		}
+		else if (multiplier == 2) {
+			difficulty *= .25;
+		}
+		else {
+			difficulty *= .1;
+		}
+
 	}
 	
 	

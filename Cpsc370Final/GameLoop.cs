@@ -138,8 +138,7 @@ public class GameLoop {
     private void CreateAiPlayers(int playerAmount, List<int> aiDifficulties) { 
         List<AIPlayers> aiPlayers = new List<AIPlayers>();
         for (int i = 0; i < playerAmount; i++) {
-            // create a new AI player with a random difficulty
-            //TODO: take user input and set that to the multiplier per input
+            // create a new AI player with a difficulty dictated by user
             aiPlayers.Add(new AIPlayers(aiDifficulties[i]));
         }
     }

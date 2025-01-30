@@ -36,8 +36,18 @@ class WheelOfFortune
         for (int i = 0; i < numAIPlayers; i++)
         {
             DelayPrint("Now, please choose AI difficulty: ('1' = Easy, '2' = medium, or '3' = hard)");
-            string difficulty = Console.ReadLine();
-            aiDifficulties.Add(int.Parse(difficulty));
+            if(Console.ReadLine() == "1" || Console.ReadLine() == "2" || Console.ReadLine() == "3")
+            {
+                // adds difficulty user inputed, very specific input allowed.
+                string difficulty = Console.ReadLine();
+                aiDifficulties.Add(int.Parse(difficulty));
+            }
+            else
+            {
+                // catch invalid input
+                Console.WriteLine("Invalid input. Please enter '1', '2', or '3'.");
+            }
+            
         }
 
         gameLoop.SetAiAmount(numAIPlayers, aiDifficulties);
