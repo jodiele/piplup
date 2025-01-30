@@ -19,12 +19,14 @@ namespace Cpsc370Final
         public void SetMoney(int money)
         {
             this.money = money;
+            Console.WriteLine($"Your total money is now ${money}.");
         }
 
         public void AddMoney(int amount)
         {
             if (amount > 0)
                 money += amount;
+            Console.WriteLine($"You earned ${amount}! Your total money is now ${money}.");
         }
 
         public bool Guess(string userInput, string currentAnswer)
@@ -64,9 +66,18 @@ namespace Cpsc370Final
                         DisplayGuessedWord(currentAnswer);
                         Console.WriteLine();
                         Console.WriteLine("===============================================");
-                        isCorrectAnswer = false;
-                        Console.Write("Enter another letter to guess or type 'SOLVE' to guess the entire phrase: ");
-                        userInput = Console.ReadLine().Trim();
+                        if (DisplayGuessedWord(currentAnswer).Equals(currentAnswer))
+                        {
+                            Console.WriteLine("Congratulations! You guessed the entire phrase.");
+                            isCorrectAnswer = true;
+                            endTurn = true;
+                        }
+                        else
+                        {
+                            isCorrectAnswer = false;
+                            Console.Write("Enter another letter to guess or type 'SOLVE' to guess the entire phrase: ");
+                            userInput = Console.ReadLine().Trim();
+                        }
                     }
                     else
                     {
@@ -86,23 +97,26 @@ namespace Cpsc370Final
             return isCorrectAnswer;
         }
 
-        private void DisplayGuessedWord(string currentAnswer)
+        private string DisplayGuessedWord(string currentAnswer)
         {
+            string guessedWord = "";
             for (int i = 0; i < currentAnswer.Length; i++)
             {
                 if (currentAnswer[i] == ' ')
                 {
-                    Console.Write(" ");
+                    guessedWord += " ";
                 }
                 else if (guessedLetters.Contains(currentAnswer[i]))
                 {
-                    Console.Write(currentAnswer[i]);
+                    guessedWord += currentAnswer[i];
                 }
                 else
                 {
-                    Console.Write("_");
+                    guessedWord += "_";
                 }
             }
+            Console.WriteLine(guessedWord);
+            return guessedWord;
         }
     }
 }

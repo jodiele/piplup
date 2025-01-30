@@ -11,6 +11,7 @@ namespace Cpsc370Final
         public void GameplayLoop()
         {
             player = new NormalPlayer();
+            
             //amount of rounds
             for (int currentRound = 0; currentRound < roundsCount; currentRound++)
             {
@@ -18,6 +19,7 @@ namespace Cpsc370Final
                 Console.WriteLine($"The chosen category is: {category}");
                 correctAnswer = ChooseRandomPhrase(category);
                 Console.WriteLine($"Round {currentRound + 1} begins!");
+                int wheelValue = SpinWheel(); //spin the wheel to determine money value
                 ShowUnsolvedWord();
 
                 //the user and AIs guess until correct
@@ -26,9 +28,10 @@ namespace Cpsc370Final
                     //user guesses
                     Console.Write("Please enter a letter or type 'SOLVE' to guess the entire phrase: ");
                     string userInput = Console.ReadLine().Trim();
-                    bool guessed = player.Guess(userInput, correctAnswer);
-                    if (guessed)
+                    bool playerGuessed = player.Guess(userInput, correctAnswer);
+                    if (playerGuessed)
                     {
+                        player.AddMoney(wheelValue);
                         break; // if the user guesses the correct answer, goes to next round
                     }
 
@@ -36,6 +39,28 @@ namespace Cpsc370Final
                     {
                         //logic for each AI to play
                     }
+                }
+
+                if (player.GetMoney() < 0)
+                {
+                    Console.Write("You are out of money!");
+                    PrintEndGame("player");
+                    break;
+                }
+
+                // TODO: Update the following code to handle each instance of AIPlayers
+                for (int i = 0; i < aiAmount; i++) {
+                    // if (aiPlayer.GetMoney() < 0)
+                    // {
+                    //     Console.Write("AI is out of money!");
+                    //     aiAmount--;
+                    // }
+                }
+                
+                if (aiAmount == 0)
+                {
+                    PrintEndGame("AI");
+                    break;
                 }
             }
         }
@@ -95,6 +120,7 @@ namespace Cpsc370Final
 
         private void ShowUnsolvedWord()
         {
+            Console.Write("The word to solve is: ");
             for (int currChar = 0; currChar < correctAnswer.Length; currChar++)
             {
                 if (correctAnswer[currChar] == ' ')
@@ -136,6 +162,37 @@ namespace Cpsc370Final
             {
                 // create a new AI player with a difficulty dictated by user
                 aiPlayers.Add(new AIPlayers(aiDifficulties[i]));
+            }
+        }
+        
+        private int SpinWheel()
+        {
+            Console.Write("Type 'SPIN' to spin the wheel: ");
+            string spinInput = Console.ReadLine();
+            while (!spinInput.Equals("SPIN", StringComparison.OrdinalIgnoreCase))
+            {
+                Console.WriteLine("Invalid input. Please type 'SPIN' to spin the wheel: ");
+                spinInput = Console.ReadLine();
+            }
+            Random random = new Random();
+            int wheelValue = random.Next(1, 21) * 100;
+            Console.WriteLine($"You spun ${wheelValue}! Solve the word/phrase to keep the money.");
+            return wheelValue;
+        }
+        
+        private void PrintEndGame(string winner)
+        {
+            Console.WriteLine("===============================================");
+            Console.WriteLine("                   GAME OVER                   ");
+            Console.WriteLine("===============================================");
+            Console.WriteLine("===============================================");
+            if (winner.Equals("player"))
+            {
+                Console.WriteLine("You win!! You ended with $" + player.GetMoney());
+            }
+            else
+            {
+                Console.WriteLine($"You loose. The winner is {winner}! You ended with ${player.GetMoney()}");
             }
         }
     }
