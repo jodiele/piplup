@@ -5,8 +5,9 @@ namespace Cpsc370Final {
         static void Main(string[] args) {
             if (args.Length < 1)
                 Console.WriteLine("Usage: Cpsc370Final <arguments>");
-            
-            
+
+            WheelOfFortune game = new WheelOfFortune();
+            game.StartGame();
         }
 
         private static void ShowArguments(string[] args) {

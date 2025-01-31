@@ -1,3 +1,5 @@
+using System.Globalization;
+
 namespace Cpsc370Final
 {
 
@@ -7,6 +9,8 @@ namespace Cpsc370Final
         private int aiAmount;
         private String correctAnswer;
         private NormalPlayer player;
+        private List<AIPlayers> aiPlayers = new List<AIPlayers>();
+        private String category;
 
         public void GameplayLoop()
         {
@@ -15,7 +19,7 @@ namespace Cpsc370Final
             //amount of rounds
             for (int currentRound = 0; currentRound < roundsCount; currentRound++)
             {
-                String category = ChooseRandomCategory();
+                category = ChooseRandomCategory();
                 Console.WriteLine($"The chosen category is: {category}");
                 correctAnswer = ChooseRandomPhrase(category);
                 Console.WriteLine($"Round {currentRound + 1} begins!");
@@ -34,10 +38,19 @@ namespace Cpsc370Final
                         player.AddMoney(wheelValue);
                         break; // if the user guesses the correct answer, goes to next round
                     }
+                    else {
+                        player.SetMoney(player.GetMoney() - wheelValue);
+                        if (player.GetMoney() < 0) {
+                            Console.Write("You are out of money!");
+                            PrintEndGame(aiPlayers[0].GetName());
+                            break;
+                        }
+                    }
 
                     for (int aiTurn = 0; aiTurn < aiAmount; aiAmount++)
                     {
                         //logic for each AI to play
+                        Console.WriteLine(aiPlayers[aiTurn].GetName() + " Guessed: " + aiPlayers[aiTurn].Guess(correctAnswer, category));
                     }
                 }
 
@@ -46,15 +59,6 @@ namespace Cpsc370Final
                     Console.Write("You are out of money!");
                     PrintEndGame("player");
                     break;
-                }
-
-                // TODO: Update the following code to handle each instance of AIPlayers
-                for (int i = 0; i < aiAmount; i++) {
-                    // if (aiPlayer.GetMoney() < 0)
-                    // {
-                    //     Console.Write("AI is out of money!");
-                    //     aiAmount--;
-                    // }
                 }
                 
                 if (aiAmount == 0)
@@ -71,7 +75,7 @@ namespace Cpsc370Final
         }
 
         // functionality for choosing random category and phrase in wheeloffortune class
-        private static readonly Dictionary<string, List<string>> CategoryPhrases = new Dictionary<string, List<string>>
+        public static readonly Dictionary<string, List<string>> CategoryPhrases = new Dictionary<string, List<string>>
         {
             {
                 "Social media apps",
@@ -142,6 +146,10 @@ namespace Cpsc370Final
             return categoryList[random.Next(categoryList.Count)];
         }
 
+        public string GetCategory() {
+            return this.category;
+        }
+
         public static string ChooseRandomPhrase(string category)
         {
             Random random = new Random();
@@ -157,7 +165,6 @@ namespace Cpsc370Final
 
         private void CreateAiPlayers(int playerAmount, List<int> aiDifficulties)
         {
-            List<AIPlayers> aiPlayers = new List<AIPlayers>();
             for (int i = 0; i < playerAmount; i++)
             {
                 // create a new AI player with a difficulty dictated by user

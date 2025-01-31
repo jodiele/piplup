@@ -28,29 +28,28 @@ namespace Cpsc370Final
             DelayPrint($"You will be playing " + rounds + " rounds!\n");
 
             DelayPrint("How many AI players would you like to play against? (1-3)\n");
+            int limitAIPlayers;
+            while (!int.TryParse(Console.ReadLine(), out limitAIPlayers) || limitAIPlayers < 1 || limitAIPlayers > 3)
+            {
+                Console.Write("Invalid input. Please enter a number between 1 and 3: ");
+            }
             int numAIPlayers = int.Parse(Console.ReadLine());
 
 
-            Console.Write($"You will be playing against " + numAIPlayers + " AI players!\n");
-
-            // unless AI difficulty is random we can change this
-            List<int> aiDifficulties = new List<int>();
-
+            DelayPrint($"You will be playing against " + numAIPlayers + " AI players!\n");
+            
+            // list to hold the difficulties for the AI
+            List<int> aiDifficulties = new List<int>(3);
+            
             for (int i = 0; i < numAIPlayers; i++)
             {
-                DelayPrint("Now, please choose AI difficulty: ('1' = Easy, '2' = medium, or '3' = hard)");
-                if (Console.ReadLine() == "1" || Console.ReadLine() == "2" || Console.ReadLine() == "3")
+                DelayPrint($"Please enter the difficulty for AI player {i + 1} (1 = easy, 2 = medium, 3 = hard): ");
+                int difficulty;
+                while (!int.TryParse(Console.ReadLine(), out difficulty) || difficulty < 1 || difficulty > 3)
                 {
-                    // adds difficulty user inputed, very specific input allowed.
-                    string difficulty = Console.ReadLine();
-                    aiDifficulties.Add(int.Parse(difficulty));
+                    Console.Write("Invalid input. Please enter a number between 1 and 3: ");
                 }
-                else
-                {
-                    // catch invalid input
-                    Console.WriteLine("Invalid input. Please enter '1', '2', or '3'.");
-                }
-
+                aiDifficulties.Add(difficulty);
             }
 
             gameLoop.SetAiAmount(numAIPlayers, aiDifficulties);
