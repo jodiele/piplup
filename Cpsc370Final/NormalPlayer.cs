@@ -65,7 +65,7 @@ namespace Cpsc370Final
                         Console.WriteLine("===============================================");
                         if (wordGuessed.Equals(currentAnswer))
                         {
-                            Console.WriteLine("Congratulations! You guessed the entire phrase.");
+                            Console.WriteLine("Congratulationst! You guessed the entire phrase.");
                             isCorrectAnswer = true;
                             endTurn = true;
                         }
@@ -74,7 +74,7 @@ namespace Cpsc370Final
                             isCorrectAnswer = false;
                             Console.Write("Enter another letter to guess or type 'SOLVE' to guess the entire phrase: ");
                             userInput = Console.ReadLine().Trim();
-                            endTurn = true;
+                            endTurn = false;
                         }
                     }
                     else
