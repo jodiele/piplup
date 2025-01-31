@@ -75,6 +75,7 @@ namespace Cpsc370Final
                 {
                     break;
                 }
+                player.ClearGuessedLetters();
             }
             PrintEndGame(username);
         }
