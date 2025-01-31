@@ -56,8 +56,6 @@ namespace Cpsc370Final
 
             DisplayInstructions();
 
-            string category = GameLoop.ChooseRandomCategory();
-            string phrase = GameLoop.ChooseRandomPhrase(category);
             gameLoop.GameplayLoop();
         }
 

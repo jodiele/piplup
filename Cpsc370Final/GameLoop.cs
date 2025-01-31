@@ -27,38 +27,39 @@ namespace Cpsc370Final
                 ShowUnsolvedWord();
 
                 //the user and AIs guess until correct
-                while (true)
-                {
+                while (true) {
                     //user guesses
                     Console.Write("Please enter a letter or type 'SOLVE' to guess the entire phrase: ");
                     string userInput = Console.ReadLine().Trim();
                     bool playerGuessed = player.Guess(userInput, correctAnswer);
-                    if (playerGuessed)
-                    {
+                    if (playerGuessed) {
                         player.AddMoney(wheelValue);
                         break; // if the user guesses the correct answer, goes to next round
                     }
                     else {
                         player.SetMoney(player.GetMoney() - wheelValue);
-                        for (int aiTurn = 0; aiTurn < aiPlayers.Count; aiTurn++)
-                        {
+                        for (int aiTurn = 0; aiTurn < aiPlayers.Count; aiTurn++) {
                             //logic for each AI to play
-                            Console.WriteLine(aiPlayers[aiTurn].GetName() + " Guessed: " + aiPlayers[aiTurn].Guess(correctAnswer, category));
+                            Console.WriteLine(aiPlayers[aiTurn].GetName() + " Guessed: " +
+                                              aiPlayers[aiTurn].Guess(correctAnswer, category));
                         }
                     }
-                }
-
-                if (player.GetMoney() < 0)
-                {
-                    Console.Write("You are out of money!");
-                    PrintEndGame(aiPlayers[0].GetName());
-                    break;
-                }
-                
-                if (aiAmount == 0)
-                {
-                    PrintEndGame("AI");
-                    break;
+                    if (player.GetMoney() < 0)
+                    {
+                        Console.Write("You are out of money!");
+                        PrintEndGame(aiPlayers[0].GetName());
+                        break;
+                    }
+                    
+                    // checking AI money amount
+                    for (int aiTurn = 0; aiTurn < aiPlayers.Count; aiTurn++) {
+                        if (aiPlayers[aiTurn].GetMoney() < 0) {
+                            Console.WriteLine(aiPlayers[aiTurn].GetName() + " is out of money!");
+                            Console.WriteLine("They had: " + aiPlayers[aiTurn].GetMoney());
+                            aiPlayers.RemoveAt(aiTurn);
+                            aiAmount--;
+                        }
+                    }
                 }
             }
         }
@@ -183,6 +184,7 @@ namespace Cpsc370Final
         
         private void PrintEndGame(string winner)
         {
+            Console.WriteLine(" ");
             Console.WriteLine("===============================================");
             Console.WriteLine("                   GAME OVER                   ");
             Console.WriteLine("===============================================");

@@ -49,8 +49,6 @@ namespace Cpsc370Final
                     }
                     else
                     {
-                        Console.WriteLine("That's not correct.");
-                        SetMoney(0);
                         isCorrectAnswer = false;
                         endTurn = true;
                     }
