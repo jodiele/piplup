@@ -67,6 +67,7 @@ namespace Cpsc370Final
                 {
                     break;
                 }
+                player.ClearGuessedLetters();
             }
         }
 
