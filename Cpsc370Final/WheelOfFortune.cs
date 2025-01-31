@@ -58,11 +58,6 @@ namespace Cpsc370Final
 
             string category = GameLoop.ChooseRandomCategory();
             string phrase = GameLoop.ChooseRandomPhrase(category);
-
-            DelayPrint($"The chosen category is: {category}");
-            DelayPrint($"Your phrase to guess is: {phrase}");
-
-            DelayPrint("Press 'q' to quit.");
             gameLoop.GameplayLoop();
         }
 
