@@ -1,4 +1,5 @@
 using System.Globalization;
+using System.Runtime.CompilerServices;
 
 namespace Cpsc370Final
 {
@@ -200,6 +201,10 @@ namespace Cpsc370Final
             {
                 Console.WriteLine($"You loose. The winner is {winner}! You ended with ${player.GetMoney()}");
             }
+        }
+        
+        public int GetRoundCount() {
+            return roundsCount;
         }
     }
 }
