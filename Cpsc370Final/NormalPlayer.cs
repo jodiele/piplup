@@ -5,7 +5,7 @@ namespace Cpsc370Final
         private int money;
         private List<char> guessedLetters;  // Change from char[] to List<char>
 
-        public NormalPlayer(int initialMoney = 100)
+        public NormalPlayer(int initialMoney = 2000)
         {
             money = initialMoney;
             guessedLetters = new List<char>();  // Initialize as an empty list
