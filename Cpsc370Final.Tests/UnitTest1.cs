@@ -27,7 +27,7 @@ public class UnitTest1
 
     [Fact]
     public void CheckGameLoopRoundCount() {
-        GameLoop gameLoop = new GameLoop();
+        GameLoop gameLoop = new GameLoop("test");
         gameLoop.SetRoundsCount(2);
         Assert.Equal(2, gameLoop.GetRoundCount());
     }

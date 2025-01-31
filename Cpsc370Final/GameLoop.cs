@@ -4,8 +4,14 @@ using System.Runtime.CompilerServices;
 namespace Cpsc370Final
 {
 
-    public class GameLoop
-    {
+    public class GameLoop {
+
+        public GameLoop(string username) {
+            this.username = username;
+        }
+
+        private string username;
+        
         private int roundsCount;
         private int aiAmount;
         private String correctAnswer;
@@ -62,12 +68,15 @@ namespace Cpsc370Final
                         }
                     }
                 }
+                
+                
 
                 if (player.GetMoney() < 0)
                 {
                     break;
                 }
             }
+            PrintEndGame(username);
         }
 
         public void SetRoundsCount(int rounds)
