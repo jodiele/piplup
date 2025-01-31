@@ -61,6 +61,11 @@ namespace Cpsc370Final
                         }
                     }
                 }
+
+                if (player.GetMoney() < 0)
+                {
+                    break;
+                }
             }
         }
 
