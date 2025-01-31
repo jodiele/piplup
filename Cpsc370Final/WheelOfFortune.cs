@@ -33,7 +33,7 @@ namespace Cpsc370Final
             {
                 Console.Write("Invalid input. Please enter a number between 1 and 3: ");
             }
-            int numAIPlayers = int.Parse(Console.ReadLine());
+            int numAIPlayers = limitAIPlayers;
 
 
             DelayPrint($"You will be playing against " + numAIPlayers + " AI players!\n");
@@ -63,10 +63,7 @@ namespace Cpsc370Final
             DelayPrint($"Your phrase to guess is: {phrase}");
 
             DelayPrint("Press 'q' to quit.");
-            while (Console.ReadKey(true).KeyChar != 'q')
-            {
-                DelayPrint("Press 'q' to exit or any other key to continue playing...");
-            }
+            gameLoop.GameplayLoop();
         }
 
         static void DisplayInstructions()
@@ -92,7 +89,7 @@ namespace Cpsc370Final
             foreach (char c in message)
             {
                 Console.Write(c);
-                Thread.Sleep(25);
+                Thread.Sleep(15);
             }
 
             Console.WriteLine();

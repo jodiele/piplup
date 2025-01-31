@@ -49,7 +49,7 @@ namespace Cpsc370Final
 					}
 				}
 				else {
-					return " "; // means ai player doesn't know what to guess
+					return "idk lol"; // means ai player doesn't know what to guess
 				}
 			} else if (difficulty == "medium") {
 				if (guessPercentage <= 4) { // these are 1/25 odds
@@ -67,7 +67,7 @@ namespace Cpsc370Final
 					}
 				}
 				else {
-					return " "; // means ai player doesn't know what to guess
+					return "bruh what"; // means ai player doesn't know what to guess
 				}
 			} else { // difficulty selected is the hardest
 				if (guessPercentage <= 10) { // 1 in 10 odds
@@ -84,10 +84,10 @@ namespace Cpsc370Final
 					}
 				}
 				else {
-					return " "; // means ai player doesn't know what to guess
+					return "whar"; // means ai player doesn't know what to guess
 				}
 			}
-			return " ";
+			return "??";
 		}
 		
 		private void SetName()
