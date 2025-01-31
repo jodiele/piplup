@@ -56,7 +56,6 @@ namespace Cpsc370Final
 
             DisplayInstructions();
 
-            DelayPrint("Press 'q' to quit.");
             gameLoop.GameplayLoop();
         }
 
