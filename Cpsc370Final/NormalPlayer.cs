@@ -61,10 +61,9 @@ namespace Cpsc370Final
                         guessedLetters.Add(guessedLetter);  // Use Add() to append the letter
                         Console.WriteLine("You guessed a correct letter!");
                         Console.WriteLine("===============================================");
-                        DisplayGuessedWord(currentAnswer);
-                        Console.WriteLine();
+                        string wordGuessed = DisplayGuessedWord(currentAnswer);
                         Console.WriteLine("===============================================");
-                        if (DisplayGuessedWord(currentAnswer).Equals(currentAnswer))
+                        if (wordGuessed.Equals(currentAnswer))
                         {
                             Console.WriteLine("Congratulations! You guessed the entire phrase.");
                             isCorrectAnswer = true;
