@@ -76,43 +76,41 @@ namespace Cpsc370Final
                 "Social media apps",
                 new List<string>
                 {
-                    "Facebook", "Instagram", "Snapchat", "TikTok", "Twitter", "LinkedIn", "Pinterest", "Reddit",
-                    "WhatsApp"
+                    "facebook", "instagram", "snapchat", "tiktok", "twitter", "linkedin", "pinterest", "reddit",
+                    "whatsapp"
                 }
             },
             {
                 "Fast food restaurants",
                 new List<string>
                 {
-                    "McDonald's", "Burger King", "KFC", "Taco Bell", "Wendy's", "Subway", "Chick-fil-A",
-                    "Domino's Pizza",
-                    "Popeyes"
+                    "mcdonalds", "burger king", "kfc", "taco bell", "wendys", "subway", "chick fil a",
+                    "dominos pizza", "popeyes"
                 }
             },
             {
                 "Reality TV shows",
                 new List<string>
                 {
-                    "Survivor", "The Bachelor", "Keeping Up with the Kardashians", "Big Brother", "The Amazing Race",
-                    "The Voice", "Love Island", "Hell's Kitchen", "Shark Tank"
+                    "survivor", "the bachelor", "keeping up with the kardashians", "big brother", "the amazing rice",
+                    "the voice", "love island", "hells kitchen", "shark tank"
                 }
             },
             {
                 "Celebrities",
                 new List<string>
                 {
-                    "Taylor Swift", "Leonardo DiCaprio", "Kim Kardashian", "Beyoncé", "Dwayne Johnson", "Rihanna",
-                    "Tom Holland", "Ariana Grande", "Chris Hemsworth"
+                    "taylor swift", "leonardo dicaprio", "kim kardashian", "beyonce", "dwayne johnson", "rihanna",
+                    "tom holland", "ariana grande", "chris hemsworth"
                 }
             },
             {
                 "Tongue twisters",
                 new List<string>
                 {
-                    "Sally sells seashells by the seashore", "Peter Piper picked a peck of pickled peppers",
-                    "How much wood would a woodchuck chuck", "Betty Botter bought some butter",
-                    "Fuzzy Wuzzy was a bear",
-                    "Six slippery snails slid slowly seaward"
+                    "sally sells seashells by the seashore", "peter piper picked a peck of pickled peppers",
+                    "how much wood would a woodchuck chuck", "betty botter bought some butter",
+                    "fuzzy wuzzy was a bear", "six slippery snails slid slowly seaward"
                 }
             }
         };
