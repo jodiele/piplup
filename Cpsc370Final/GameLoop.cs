@@ -92,7 +92,7 @@ namespace Cpsc370Final
                 "Reality TV shows",
                 new List<string>
                 {
-                    "survivor", "the bachelor", "keeping up with the kardashians", "big brother", "the amazing rice",
+                    "survivor", "the bachelor", "keeping up with the kardashians", "big brother", "the amazing race",
                     "the voice", "love island", "hells kitchen", "shark tank"
                 }
             },
