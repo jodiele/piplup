@@ -24,4 +24,11 @@ public class UnitTest1
         ai.SetMoney(2000);
         Assert.Equal(2000, ai.GetMoney());
     }
+
+    [Fact]
+    public void CheckGameLoopRoundCount() {
+        GameLoop gameLoop = new GameLoop();
+        gameLoop.SetRoundsCount(2);
+        Assert.Equal(2, gameLoop.GetRoundCount());
+    }
 }
