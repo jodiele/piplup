@@ -40,24 +40,18 @@ namespace Cpsc370Final
                     }
                     else {
                         player.SetMoney(player.GetMoney() - wheelValue);
-                        if (player.GetMoney() < 0) {
-                            Console.Write("You are out of money!");
-                            PrintEndGame(aiPlayers[0].GetName());
-                            break;
+                        for (int aiTurn = 0; aiTurn < aiPlayers.Count; aiTurn++)
+                        {
+                            //logic for each AI to play
+                            Console.WriteLine(aiPlayers[aiTurn].GetName() + " Guessed: " + aiPlayers[aiTurn].Guess(correctAnswer, category));
                         }
-                    }
-
-                    for (int aiTurn = 0; aiTurn < aiAmount; aiAmount++)
-                    {
-                        //logic for each AI to play
-                        Console.WriteLine(aiPlayers[aiTurn].GetName() + " Guessed: " + aiPlayers[aiTurn].Guess(correctAnswer, category));
                     }
                 }
 
                 if (player.GetMoney() < 0)
                 {
                     Console.Write("You are out of money!");
-                    PrintEndGame("player");
+                    PrintEndGame(aiPlayers[0].GetName());
                     break;
                 }
                 

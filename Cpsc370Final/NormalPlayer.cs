@@ -77,6 +77,7 @@ namespace Cpsc370Final
                             isCorrectAnswer = false;
                             Console.Write("Enter another letter to guess or type 'SOLVE' to guess the entire phrase: ");
                             userInput = Console.ReadLine().Trim();
+                            endTurn = true;
                         }
                     }
                     else
