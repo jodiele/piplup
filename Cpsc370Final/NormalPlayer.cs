@@ -45,6 +45,9 @@ namespace Cpsc370Final
                         Console.WriteLine("Yay! Your guess is correct.");
                         isCorrectAnswer = true;
                         endTurn = true;
+                        Console.WriteLine("===============================================");
+                        Console.WriteLine($"Congratulationst! You guessed the phrase: {currentAnswer}.");
+                        Console.WriteLine("===============================================");
                         guessedLetters.Clear();
                     }
                     else
