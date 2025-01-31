@@ -3,7 +3,7 @@ namespace Cpsc370Final
 
     class WheelOfFortune
     {
-        GameLoop gameLoop = new GameLoop();
+        
 
         public void StartGame()
         {
@@ -14,6 +14,7 @@ namespace Cpsc370Final
 
             DelayPrint("First thing's first! Please enter a username to continue: ");
             string username = Console.ReadLine();
+            GameLoop gameLoop = new GameLoop(username);
             DelayPrint($"Welcome, {username}!");
 
             DelayPrint("How many rounds would you like to play? (1-6): ");
